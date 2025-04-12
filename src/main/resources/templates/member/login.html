@@ -5,13 +5,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>회원가입</title>
+    <title>로그인</title>
 </head>
 <body>
     <form th:action="@{/member/login}" method="post" th:object="${memberVO}">
         <div><input th:field="*{memberEmail}" placeholder="이메일" /></div>
-        <div><input th:field="*{memberPassword}" placeholder="비밀번호" /></div>
-        <button type="button">로그인</button>
+        <div><input th:field="*{memberPassword}" placeholder="비번" /></div>
+        <button> 로그인 </button>
+
     </form>
 </body>
 
@@ -22,12 +23,11 @@
 
     submitButton.addEventListener("click", ()=>{
         for(let input of inputs){
-            if(!input.value)
-                return alert(`${input.name}값을 입력히세요`)
+            if(!input.value) return alert("값을 입력해주세요")
+
         }
         form.submit();
     })
-
 
 </script>
 </html>

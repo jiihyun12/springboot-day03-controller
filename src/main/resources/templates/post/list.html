@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시판 리스트 페이지</title>
+    <style>
+        th, td{
+            border: solid 1px black;;
+        }
+    </style>
+
+</head>
+<body>
+    <button onclick="window.location.href = '/member/logout'">로그아웃</button>
+    <th:block th:if="${#lists.size(posts) != 0}"> <!-- if문이 true일 때-->
+        <table>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+            </tr>
+            <th:block th:each="post :${posts}">
+                <tr th:object="${post}">
+                    <td th:text="*{postTitle}"> </td>
+                    <td th:text="*{postContent}"> </td>
+                </tr>
+            </th:block>
+        </table>
+    </th:block>
+    <th:block th:unless="${#lists.size(posts) != 0}"> <!-- if문이 false일 때 -->
+
+    </th:block>
+</body>
+<script th:inline="javascript">
+   // const member =  [[${session.member}]]
+   // const member =  [[${session.product}]]
+   const posts =  [[${posts}]]
+
+   // console.log(member)
+   // console.log(product)
+   console.log(posts)
+</script>
+</html>
